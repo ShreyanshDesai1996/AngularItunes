@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.1/pure-min.css">
+<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+<form>
+  <label>Search for</label>
+  <input type="text"  [(value)]="values" (keyup)="onKeyPress($event)"> 
+      
+</form>
+
+<div>{{searchStatus}}</div>
+<hr>
+<table *ngIf="showTable" class="pure-table pure-table-striped">
+  <thead>
+    <tr>
+      <th>Cover</th>
+      <th>Artist</th>
+      <th>Track</th>
+      <th>Details</th> 
+    </tr>
+  </thead>
+
+  <tr *ngFor="let media of searchResults">
+    <td><img [src]="media.artworkUrl60" /></td>
+    <td>{{ media.artistName }}</td>
+    <td>{{ media.trackName }}</td>
+    <td><button (click)="btnClick($event,media.trackName,media.artistName,media.artworkUrl60,media.previewUrl)">Details</button></td>
+  </tr>
+</table>
+
+<div *ngIf="showDetails">
+  <button (click)="backBtn()">Go Back</button><br><br>
+  Track details<br><br>
+  <img [src]="currentCover"><br><br>
+  {{currentArtist}} - {{currentTrack}}<br><br>
+  <audio controls>
+    <source [src]="currentPreview" type="audio/mpeg">
+  </audio>
+</div>
