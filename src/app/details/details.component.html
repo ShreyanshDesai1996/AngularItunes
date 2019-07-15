@@ -1,0 +1,8 @@
+<button (click)="backBtn()">Go Back</button><br><br>
+  Track details<br><br>
+  <img [src]="currentCover"><br><br>
+  {{currentArtist}} - {{currentTrack}}<br><br>
+  Preview<br>
+  <audio controls>
+    <source [src]="currentPreview" type="audio/mpeg">
+  </audio>

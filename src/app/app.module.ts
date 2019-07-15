@@ -5,19 +5,23 @@ import { HttpModule } from '@angular/http';
 import { JsonpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { SearcherComponent } from './searcher/searcher.component';
-
+import { DetailsComponent } from './details/details.component';
+import {RouterModule, Router} from '@angular/router';
+import {DservService} from '../app/shared/dserv.service';
 @NgModule({
   declarations: [
     AppComponent,
-    SearcherComponent
+    SearcherComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    JsonpModule
+    JsonpModule,
+    RouterModule.forRoot([{path: ':tid', component: DetailsComponent}])
   ],
-  providers: [],
+  providers: [DservService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

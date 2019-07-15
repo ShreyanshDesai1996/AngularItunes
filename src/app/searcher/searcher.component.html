@@ -2,12 +2,12 @@
 <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
 <form>
-  <label>Search for</label>
+  <label>Search for </label>
   <input type="text"  [(value)]="values" (keyup)="onKeyPress($event)"> 
       
 </form>
 
-<div>{{searchStatus}}</div>
+<div>{{searchStatus}}</div><br>
 <hr>
 <table *ngIf="showTable" class="pure-table pure-table-striped">
   <thead>
@@ -23,9 +23,11 @@
     <td><img [src]="media.artworkUrl60" /></td>
     <td>{{ media.artistName }}</td>
     <td>{{ media.trackName }}</td>
-    <td><button (click)="btnClick($event,media.trackName,media.artistName,media.artworkUrl60,media.previewUrl)">Details</button></td>
+    <td><button (click)="btnClick($event,media.trackId,media.trackName,media.artistName,media.artworkUrl60,media.previewUrl)">Details</button></td>
   </tr>
 </table>
+
+<router-outlet ></router-outlet>
 
 <div *ngIf="showDetails">
   <button (click)="backBtn()">Go Back</button><br><br>
